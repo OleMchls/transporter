@@ -6,8 +6,11 @@ transporterApp.directive('transporterMap', ['$compile', '$window', 'ViewportServ
 
   link:
     pre: (scope, iElement, iAttrs, controller) ->
+      iAttrs.mapMargin ||= 20
+      mapMargin = parseInt(iAttrs.mapMargin, 10)
+
       scope.viewport = new Viewport(width: 0, height: 0);
-      scope.map = new Map(viewport: scope.viewport);
+      scope.map = new Map(viewport: scope.viewport, margin: mapMargin);
       scope.mapInitialized = true
 
     post: (scope, iElement, iAttrs, controller) ->

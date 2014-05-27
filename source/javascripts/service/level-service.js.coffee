@@ -4,6 +4,7 @@ transporterApp.service 'LevelService', ['LevelLoaderService', 'RouteService', (L
   class Level
     constructor: ({@map}) ->
       @players = []
+      @map.level = @
       @cities = []
       @routes = []
 
