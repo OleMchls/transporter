@@ -1,5 +1,6 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     activesupport (4.1.1)
       i18n (~> 0.6, >= 0.6.9)
@@ -85,6 +86,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rails-assets-angular (1.2.16)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.4)
       ffi (>= 0.5.0)
@@ -117,5 +119,6 @@ PLATFORMS
 DEPENDENCIES
   middleman (~> 3.3.3)
   middleman-livereload (~> 3.1.0)
+  rails-assets-angular
   tzinfo-data
   wdm (~> 0.1.0)
