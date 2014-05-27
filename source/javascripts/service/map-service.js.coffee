@@ -42,4 +42,4 @@ transporterApp.service 'MapService', ->
       y: @margin + yRelativePosition * (@viewport.height - 2 * @margin)
 
     baseSize: =>
-      Map.BASE_SIZE * @viewport.width
+      Map.BASE_SIZE * (@viewport.width + @viewport.height) / 2.0
