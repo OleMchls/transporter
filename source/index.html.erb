@@ -3,5 +3,9 @@ title: Welcome to Middleman
 ---
 
 <svg ng-controller="IndexController">
-  <circle ng-repeat="city in cities" cx="{{city.x}}" cy="{{city.y}}" r="50" />
+  <circle ng-repeat="city in cities" ng-click="select(city)" cx="{{city.x}}" cy="{{city.y}}" r="40" />
+  <line ng-repeat="route in routes"
+    x1="{{route.start.x}}" y1="{{route.start.y}}"
+    x2="{{route.target.x}}" y2="{{route.target.y}}"
+    stroke="black" stroke-width="4" />
 </svg>
