@@ -5,6 +5,8 @@ transporterApp.directive('city', ['$compile', 'SVGNodeService', ($compile, SVGNo
   scope: '=',
 
   link: (scope, element, attrs) ->
-    circle = SVGNodeService.createSVGNode('circle', scope, r: 40, cx: 'city | screenCoordinateX', cy: 'city | screenCoordinateY')
+    circleSize = 1
+
+    circle = SVGNodeService.createSVGNode('circle', scope, r: "city | screenSize:#{circleSize}", cx: 'city | screenCoordinateX', cy: 'city | screenCoordinateY')
     element.replaceWith(circle);
 ])
