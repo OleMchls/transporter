@@ -8,4 +8,7 @@ transporterApp.service 'CityService', ['GoodService', (Good) ->
     @fromJson: (json) ->
       goods = new Good(good.name) for good in json.goods
       new City(x: json.x, y: json.y, goods: goods)
+
+    distanceTo: (city) ->
+      Math.sqrt(Math.pow((city.x - @x), 2) + Math.pow((city.y - @y), 2))
 ]

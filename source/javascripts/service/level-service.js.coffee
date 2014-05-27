@@ -3,6 +3,7 @@ transporterApp = angular.module 'transporter'
 transporterApp.service 'LevelService', ['LevelLoaderService', 'RouteService', (LevelLoader, Route) ->
   class Level
     constructor: ({@map}) ->
+      @players = []
       @cities = []
       @routes = []
 
@@ -16,6 +17,9 @@ transporterApp.service 'LevelService', ['LevelLoaderService', 'RouteService', (L
       city.level = @
       @cities.push(city)
 
-    addRoute: ({startCity, targetCity}) ->
-      @routes.push new Route(startCity: startCity, targetCity: targetCity)
+    addRoute: ({startCity, targetCity, player}) ->
+      route = new Route(start: startCity, target: targetCity)
+      if truck = player.getFreeTrucks()[0]
+        truck.startRoute {startCity, targetCity}
+        @routes.push route
 ]
