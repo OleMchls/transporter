@@ -1,0 +1,13 @@
+{
+  "cities": [
+    {"x": 0, "y": 0, "goods": [
+      {"name": "Iron"},
+      {"name": "Oil"},
+      {"name": "Iron"}
+    ]},
+    {"x": -0.8, "y": 0.5, "goods": [
+      {"name": "Poly Hydridocarbyne"},
+      {"name": "Oil"}
+    ]}
+  ]
+}
