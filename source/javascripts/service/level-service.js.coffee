@@ -3,6 +3,7 @@ transporterApp = angular.module 'transporter'
 transporterApp.service 'LevelService', ['LevelLoaderService', 'RouteService', (LevelLoader, Route) ->
   class Level
     constructor: ({@map}) ->
+      @map.level = @
       @cities = []
       @routes = []
 
