@@ -24,7 +24,4 @@ transporterApp.controller 'IndexController', ['$scope', 'LevelService', 'CitySer
     else
       $scope.selectedCity = city
 
-  $scope.cityClass = (city) ->
-    'selected' if $scope.selectedCity == city
-
 ]
