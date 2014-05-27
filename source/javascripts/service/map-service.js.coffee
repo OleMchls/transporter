@@ -2,6 +2,8 @@ transporterApp = angular.module 'transporter'
 
 transporterApp.service 'MapService', ->
   class Map
+    @BASE_SIZE = 0.01
+
     constructor: ({@level, @viewport, @margin}) ->
 
     dimensions: =>
@@ -38,3 +40,6 @@ transporterApp.service 'MapService', ->
 
       x: @margin + xRelativePosition * (@viewport.width - 2 * @margin)
       y: @margin + yRelativePosition * (@viewport.height - 2 * @margin)
+
+    baseSize: =>
+      Map.BASE_SIZE * @viewport.width
