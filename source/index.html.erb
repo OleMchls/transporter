@@ -2,8 +2,8 @@
 title: Welcome to Middleman
 ---
 
-<svg ng-controller="IndexController">
-  <circle ng-repeat="city in level.cities" ng-click="select(city)" ng-attr-cx="{{city.x}}" ng-attr-cy="{{city.y}}" r="40" />
+<svg ng-controller="IndexController" transporter-map>
+  <circle ng-repeat="city in level.cities" ng-click="select(city)" ng-attr-cx="{{city | screenCoordinateX}}" ng-attr-cy="{{city | screenCoordinateY}}" r="40" />
   <line ng-repeat="route in level.routes"
     ng-attr-x1="{{route.start.x}}" ng-attr-y1="{{route.start.y}}"
     ng-attr-x2="{{route.target.x}}" ng-attr-y2="{{route.target.y}}"
