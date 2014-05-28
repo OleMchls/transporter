@@ -21,6 +21,7 @@ transporterApp.service 'LevelService', ['LevelLoaderService', 'RouteService', (L
     addRoute: ({startCity, targetCity, player}) ->
       route = new Route(start: startCity, target: targetCity)
       if truck = player.getFreeTrucks()[0]
-        truck.startRoute {startCity, targetCity}
-        @routes.push route
+        index = (@routes.push(route) - 1)
+        truck.startRoute route, => @routes[index] = null
+
 ]

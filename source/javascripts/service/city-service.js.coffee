@@ -11,4 +11,11 @@ transporterApp.service 'CityService', ['GoodService', (Good) ->
 
     distanceTo: (city) ->
       Math.sqrt(Math.pow((city.x - @x), 2) + Math.pow((city.y - @y), 2))
+
+    hasPlayerTruck: (player) ->
+      hasTruck = false
+      for truck in player.trucks
+        do (truck) =>
+          hasTruck = true if truck.currentCity is @
+      hasTruck
 ]

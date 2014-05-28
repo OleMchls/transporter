@@ -13,7 +13,11 @@ transporterApp.directive('city', ['$compile', 'SVGNodeService', ($compile, SVGNo
 
     scope.$watch 'selectedCity', (newValue, oldValue) ->
       circle.classList.remove('selected')
-      circle.classList.add('selected') if newValue is scope.city
+      circle.classList.remove('possible-target')
+      if newValue is scope.city
+        circle.classList.add('selected')
+      else if newValue
+        circle.classList.add('possible-target')
 
     element.replaceWith(circle);
 ])

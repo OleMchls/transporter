@@ -17,14 +17,14 @@ transporterApp.controller 'IndexController', ['$scope', 'AnimatorService', 'Leve
   (nothing = -> Animator(nothing))()
 
   $scope.select = (city) ->
-    if ($scope.unassignedTrucks > 0)
+    if $scope.unassignedTrucks > 0
       $scope.unassignedTrucks--
       $scope.currentPlayer.trucks.push new Truck({player: $scope.currentPlayer, currentCity: city})
       return
-    if ($scope.selectedCity)
-      if $scope.selectedCity == city then return $scope.selectedCity = null
+    if $scope.selectedCity
+      if $scope.selectedCity is city then return $scope.selectedCity = null
       $scope.level.addRoute startCity: $scope.selectedCity, targetCity: city, player: $scope.currentPlayer
-    else
+    else if city.hasPlayerTruck $scope.currentPlayer
       $scope.selectedCity = city
 
 ]
