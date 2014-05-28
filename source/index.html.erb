@@ -1,7 +1,3 @@
----
-title: Welcome to Middleman
----
-
 <svg ng-controller="IndexController" transporter-map map-margin="50">
   <city ng-repeat="city in level.cities" />
 
@@ -10,8 +6,8 @@ title: Welcome to Middleman
   </g>
 
   <line ng-repeat="route in level.routes"
-    ng-attr-x1="{{route.start.x}}" ng-attr-y1="{{route.start.y}}"
-    ng-attr-x2="{{route.target.x}}" ng-attr-y2="{{route.target.y}}"
+    ng-attr-x1="{{route.start|screenCoordinateX}}" ng-attr-y1="{{route.start|screenCoordinateY}}"
+    ng-attr-x2="{{route.target|screenCoordinateX}}" ng-attr-y2="{{route.target|screenCoordinateY}}"
     stroke="black" stroke-width="4" />
 
 </svg>
