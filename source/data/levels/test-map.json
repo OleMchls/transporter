@@ -1,4 +1,7 @@
 {
+  "map": {
+    "aspectRatio": 1.33333
+  },
   "cities": [
     {"x": 0.1, "y": 0, "goods": [
       {"name": "Iron"},

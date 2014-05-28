@@ -7,7 +7,8 @@ transporterApp.service 'LevelLoaderService', ['$http', '$q', 'CityService', ($ht
     $http({method: 'GET', url: "/data/levels/#{name}.json"})
       .success (data, status, headers, config) ->
         cities = (City.fromJson(city) for city in data.cities)
-        deferred.resolve(cities: cities)
+
+        deferred.resolve(cities: cities, map: data.map)
 
       .error ->
         deferred.reject()

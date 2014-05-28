@@ -11,6 +11,8 @@ transporterApp.service 'LevelService', ['LevelLoaderService', 'RouteService', (L
     load: ({name}) =>
       LevelLoader.loadLevel(name: name).then((data) =>
         @addCity(city) for city in data.cities
+        @map.updateLevelData(data.map)
+
       , -> alert("Could not load map #{name}"))
       @
 
