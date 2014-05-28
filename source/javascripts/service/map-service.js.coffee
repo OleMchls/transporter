@@ -35,6 +35,9 @@ transporterApp.service 'MapService', ->
     screenCoords: ({x, y}) =>
       dimensions = @dimensions()
 
+      if typeof x is 'function' then x = x()
+      if typeof y is 'function' then y = y()
+
       xRelativePosition = (x - dimensions.min.x) / @width()
       yRelativePosition = (y - dimensions.min.y) / @height()
 

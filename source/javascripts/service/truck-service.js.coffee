@@ -7,23 +7,38 @@ transporterApp.service 'TruckService', ->
     constructor: ({@player, @currentCity}) ->
       @busy = false
       @currentPos = {x: @currentCity.x, y: @currentCity.y}
+      @level = @currentCity.level
 
-    x: ->
-    y: ->
+    x: =>
+      return unless @busy
+      xDelta = @targetCity.x - @startCity.x
+
+      Math.floor((@startCity.x + xDelta * @routeProgress()) * 10000) / 10000
+
+
+    y: =>
+      return unless @busy
+      yDelta = @targetCity.y - @startCity.y
+
+      Math.floor((@startCity.y + yDelta * @routeProgress()) * 10000) / 10000
 
     distPerMs: -> BASE_SPEED / 100000
 
-    startRoute: ({startCity, targetCity}) ->
+    startRoute: ({startCity, targetCity}) =>
       if @currentCity == startCity && @currentCity != targetCity
         @busy = true
+        @startCity = startCity
+        @targetCity = targetCity
         @currentCity = undefined
-        startTime = new Date()
+        @startTime = new Date()
         distance = startCity.distanceTo targetCity
-        timeToTarget = distance / @distPerMs()
-        console.log 'start', timeToTarget
-        setTimeout @finishRoute, timeToTarget, {startCity: startCity, targetCity: targetCity}
+        @timeToTarget = distance / @distPerMs()
+        setTimeout @finishRoute, @timeToTarget, {startCity: startCity, targetCity: targetCity}
 
-    finishRoute: ({startCity, targetCity}) ->
+    finishRoute: ({startCity, targetCity}) =>
       @busy = false
       @currentPos = {x: targetCity.x, y: targetCity.y}
-      console.log 'done'
+
+    routeProgress: =>
+      timePassed = new Date() - @startTime
+      timePassed / @timeToTarget

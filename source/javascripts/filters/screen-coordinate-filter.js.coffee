@@ -1,10 +1,18 @@
 transporterApp = angular.module 'transporter'
 
-# conditional based on optional argument
+screenCoordinate = (entity, offset) ->
+  map = entity.level.map
+  offset = if offset then map.baseSize() * offset else 0
+
+  coords = map.screenCoords(x: entity.x, y: entity.y)
+  coords.x += offset
+  coords.y += offset
+  coords
+
 transporterApp.filter("screenCoordinateX", ->
-  (entity) ->
-    entity.level.map.screenCoords(x: entity.x, y: entity.y).x
+  (entity, offset) ->
+    screenCoordinate(entity, offset).x || -1000
 ).filter("screenCoordinateY", ->
-  (entity) ->
-    entity.level.map.screenCoords(x: entity.x, y: entity.y).y
+  (entity, offset) ->
+    screenCoordinate(entity, offset).y || -1000
 )

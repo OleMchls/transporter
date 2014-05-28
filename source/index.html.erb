@@ -5,6 +5,10 @@ title: Welcome to Middleman
 <svg ng-controller="IndexController" transporter-map map-margin="50">
   <city ng-repeat="city in level.cities" />
 
+  <g ng-repeat="player in level.players">
+    <truck ng-repeat="truck in player.trucks" />
+  </g>
+
   <line ng-repeat="route in level.routes"
     ng-attr-x1="{{route.start.x}}" ng-attr-y1="{{route.start.y}}"
     ng-attr-x2="{{route.target.x}}" ng-attr-y2="{{route.target.y}}"

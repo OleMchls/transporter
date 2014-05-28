@@ -1,6 +1,6 @@
 transporterApp = angular.module 'transporter'
 
-transporterApp.controller 'IndexController', ['$scope', 'LevelService', 'CityService', 'GoodService', 'PlayerService', 'TruckService', ($scope, Level, City, Good, Player, Truck) ->
+transporterApp.controller 'IndexController', ['$scope', 'AnimatorService', 'LevelService', 'CityService', 'GoodService', 'PlayerService', 'TruckService', ($scope, Animator, Level, City, Good, Player, Truck) ->
 
   $scope.$watch('mapInitialized', (newValue, oldValue) ->
     level = new Level(map: $scope.map).load(name: 'test-map')
@@ -12,6 +12,9 @@ transporterApp.controller 'IndexController', ['$scope', 'LevelService', 'CitySer
   $scope.selectedCity = null
 
   $scope.unassignedTrucks = 1
+
+  # 😭💥🔫
+  (nothing = -> Animator(nothing))()
 
   $scope.select = (city) ->
     if ($scope.unassignedTrucks > 0)
