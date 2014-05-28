@@ -25,6 +25,7 @@ transporterApp.service 'TruckService', ->
     startRoute: (route, onSuccess) =>
       [startCity, targetCity] = [route.start, route.target]
       if @currentCity == startCity && @currentCity != targetCity
+        @route = route
         @busy = true
         @startCity = startCity
         @targetCity = targetCity
@@ -37,6 +38,7 @@ transporterApp.service 'TruckService', ->
     finishRoute: (route, onSuccess) =>
       [startCity, targetCity] = [route.start, route.target]
       @busy = false
+      delete @route
       @currentPos = {x: targetCity.x, y: targetCity.y}
       @currentCity = targetCity
       onSuccess()

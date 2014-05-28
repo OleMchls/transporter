@@ -1,6 +1,7 @@
 transporterApp = angular.module 'transporter'
 
 screenCoordinate = (entity, offset) ->
+  return {} unless entity
   map = entity.level.map
   offset = if offset then map.baseSize() * offset else 0
 
