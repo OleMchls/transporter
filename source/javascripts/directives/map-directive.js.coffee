@@ -15,8 +15,9 @@ transporterApp.directive('transporterMap', ['$compile', '$window', 'ViewportServ
 
     post: (scope, iElement, iAttrs, controller) ->
       scope.onResizeFunction = ->
-        scope.viewport.width = iElement[0].offsetWidth
-        scope.viewport.height = iElement[0].offsetHeight
+        # Firefox needs te computedStyle madness
+        scope.viewport.width = iElement[0].offsetWidth or parseInt(window.getComputedStyle(iElement[0]).width, 10)
+        scope.viewport.height = iElement[0].offsetHeight or parseInt(window.getComputedStyle(iElement[0]).height, 10)
 
       # Call to the function when the page is first loaded
       scope.onResizeFunction()
