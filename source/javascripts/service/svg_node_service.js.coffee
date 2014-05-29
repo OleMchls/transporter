@@ -2,6 +2,7 @@ transporterApp = angular.module 'transporter'
 
 # From: http://jasonmore.net/angular-js-svg-directives-ng-repeat-templates/
 # Thank you! <3 <3 <3
+# Check also this: http://stackoverflow.com/questions/13641105/including-svg-template-in-angularjs-directive
 transporterApp.service 'SVGNodeService', ->
   xmlns = "http://www.w3.org/2000/svg"
   compileNode = (angularElement) ->
