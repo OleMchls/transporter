@@ -16,6 +16,8 @@ transporterApp.controller 'IndexController', ['$scope', 'AnimatorService', 'Leve
   # 😭💥🔫
   (nothing = -> Animator(nothing))()
 
+  $scope.citySelected = (city) -> $scope.selectedCity is city
+
   $scope.select = (city) ->
     if $scope.unassignedTrucks > 0
       $scope.unassignedTrucks--
